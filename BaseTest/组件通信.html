@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <my_div my-Message="今天炸了" img-src="img/img_01.png"></my_div>
+    <my_div my-Message="今天开了" img-src="img/img_02.png"></my_div>
+</div>
+
+<template id="my_div">
+    <div>
+        <h1>{{myMessage}}</h1>
+        <img :src="imgSrc" width="200" alt="">
+    </div>
+</template>
+
+
+<script src="js/vue.js"></script>
+<script>
+
+    Vue.component(
+        'my_div', {
+            template: '#my_div',
+            props: ['myMessage', 'imgSrc']
+        },
+    );
+
+    new Vue({
+        el: '#app',
+
+    });
+</script>
+</body>
+</html>

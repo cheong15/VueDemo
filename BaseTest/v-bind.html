@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active {
+            background-color: orangered;
+            font-size: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--<img :src="imgSrc" alt="">-->
+    <p v-for="(college,index) in colleges" :class="index===activeIndex?'active':''">{{college}}</p>
+    <p :style="{color:style.color}">fuck</p>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+//            imgSrc: 'img/img_01.png',
+            colleges: [
+                'ios', 'html', 'vr', 'java', 'ui'
+            ],
+            activeIndex: 2,
+            style: {
+                color: 'green',
+            }
+        }
+
+    });
+</script>
+</body>
+</html>

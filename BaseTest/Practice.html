@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>综合练习</title>
+    <style>
+        #app {
+            width: 600px;
+            margin: 50px auto;
+        }
+
+        fieldset {
+            border: 1px solid orangered;
+            margin-bottom: 20px;
+        }
+
+        fieldset input {
+            width: 200px;
+            height: 30px;
+            margin: 10px 0;
+        }
+
+        table {
+            width: 600px;
+            border: 2px solid orange;
+            text-align: center;
+        }
+
+        thread {
+            background-color: #ff3a13;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--第一部分-->
+    <fieldset>
+        <legend>cheong学生录入系统</legend>
+        <div>
+            <span>姓名：</span>
+            <input type="text" placeholder="请输入姓名" v-model="student.name">
+        </div>
+        <div>
+            <span>年龄：</span>
+            <input type="text" placeholder="请输入年龄" v-model="student.age">
+        </div>
+        <div>
+            <span>性别：</span>
+            <select v-model="student.sex">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+        </div>
+        <div>
+            <span>手机号码：</span>
+            <input type="text" placeholder="请输入手机号码" v-model="student.phone">
+        </div>
+
+        <button @click="addPerson()">创建新用户</button>
+    </fieldset>
+    <!--第二部分-->
+    <table>
+        <thread>
+            <tr>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>年龄</td>
+                <td>手机</td>
+                <td>删除</td>
+            </tr>
+        </thread>
+        <tbody>
+        <tr v-for="p in persons">
+            <td>{{p.name}}</td>
+            <td>{{p.sex}}</td>
+            <td>{{p.age}}</td>
+            <td>{{p.phone}}</td>
+            <td>
+                <button>删除</button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            persons: [
+                {name: '张三', age: 18, sex: '男', phone: '16955546500'},
+                {name: '王五', age: 99, sex: '男', phone: '15955544500'},
+                {name: '朱八', age: 13, sex: '女', phone: '13952546500'},
+                {name: '王七', age: 32, sex: '男', phone: '12355546500'},
+            ],
+            student: {name: '', age: 0, sex: '', phone: ''},
+        },
+        methods: {
+            addPerson: function () {
+                this.persons.unshift(this.student);
+            },
+        }
+
+    });
+</script>
+</body>
+</html>

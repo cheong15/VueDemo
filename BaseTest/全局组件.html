@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <parent></parent>
+</div>
+
+<template id="templ">
+    <div>
+        <input type="date">
+        <p>今天已经是冬天</p>
+    </div>
+</template>
+
+<script src="js/vue.js"></script>
+<script>
+    //1.创建组件构造器
+
+    let Profile = Vue.extend({
+        template:'#templ'
+    });
+
+    Vue.component('parent', {
+        components:{
+            'my-date':Profile
+        },
+        template:`
+        <my-date></my-date>
+        `
+    });
+    //2.注册
+
+    new Vue({
+        el: '#app'
+    ,
+    data: {
+        msg: '今天的天气很好',
+    }
+
+    })
+    ;
+</script>
+</body>
+</html>
