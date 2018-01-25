@@ -2,37 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>匿名插槽</title>
 </head>
 <body>
-<div id="app">
 
+<div id="app">
+<my-slot>
+    <img src="img/img_01.png" width="200" alt="">
+    <p>这个姑娘很么</p>
+</my-slot>
 </div>
+
 
 <template id="my_slot">
     <div id="panel">
-        <h2 class="panel-header">头部</h2>
-        <!--预留一个插槽-->
+        <h2 class="panel-header">插槽的头部</h2>
+        <!--预留的插槽-->
         <slot>可以替换任何标签</slot>
         <footer>插槽尾部</footer>
     </div>
-</template>
 
+</template>
 <script src="js/vue.js"></script>
 <script>
 
     Vue.component('my-slot',{
-        template:'#my_slot',
+        template:'#my_slot'
     })
-
 
     new Vue({
         el: '#app',
         data: {
-            msg: '今天的天气很好',
+            msg: '今天天气真好'
         }
-
     });
+
 </script>
 </body>
 </html>
